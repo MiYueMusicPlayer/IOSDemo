@@ -1,0 +1,93 @@
+//
+//  PrefixHeader.pch
+//  MiYue
+//
+//  Created by 黄天宇 on 2019/7/4.
+//  Copyright © 2019 黄天宇. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+//socket头文件
+#import "GCDAsyncSocket.h" // for TCP
+#import "GCDAsyncUdpSocket.h" // for UDP
+#import "Masonry.h"
+#import "YYModel.h"
+//颜色头文件
+#import "UIColor+HexColor.h"
+//处理各种规则
+#import "NSString+regular.h"
+//tableview空数据的处理
+#import "UIScrollView+EmptyDataSet.h"
+//封装的弹出提示框
+#import "MBProgressHUD+NHAdd.h"
+//socket
+#import "GeneralSocket.h"
+//联动
+#import "JXCategoryListCollectionContainerView.h"
+//返回主体
+#import "ReturnBodyModel.h"
+//sdweb
+#import "UIImageView+WebCache.h"
+//刷新
+#import "MJRefresh.h"
+//缓存
+#import <YYCache/YYCache.h>
+#import "CacheWriteAndRead.h"
+//处理NSData
+#import "NSData+SwitchData.h"
+#import "MusicModel.h"
+#endif
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//尺寸设置
+#define SCREEN_BOUNDS ([UIScreen mainScreen].bounds)
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#define WIDTH_SCALE SCREEN_WIDTH/375
+#define HEIGHT_SCALE SCREEN_HEIGHT/667
+
+//线条颜色
+#define LINECOLOR [UIColor colorWithHexString:@"0E101D"]
+//标准字颜色
+#define TEXTCOLOR [UIColor colorWithHexString:@"FFFFFF"]
+//背景颜色
+#define BACKGROUNDCOLOR [UIColor colorWithHexString:@"191B31"]
+//无数据字体颜色
+#define NOTEXTCOLOR [UIColor colorWithHexString:@"8A8EA8"]
+//常用字体颜色
+#define TEXTNORMALCOLOR [UIColor colorWithHexString:@"CDD1E1"]
+//生成随机数使用
+#define ARC4RANDOM_MAX      0x100000000
+
+//适配iphone x的尝试
+// 判断是否是iPhone X
+#define iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+//#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+// 状态栏高度
+#define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
+// 导航栏高度
+#define NAVIGATION_BAR_HEIGHT (iPhoneX ? 88.f : 64.f)
+// tabBar高度
+#define TAB_BAR_HEIGHT (iPhoneX ? (49.f+34.f) : 49.f)
+// home indicator
+#define HOME_INDICATOR_HEIGHT (iPhoneX ? 34.f : 0.f)
+//状态栏的高度
+#define StateBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+//房间高度
+#define RoomCellHeight 122*WIDTH_SCALE
+
+#define HG  [UIScreen mainScreen].bounds.size.height
+#define WD  [UIScreen mainScreen].bounds.size.width
+
+#endif /* PrefixHeader_pch */
